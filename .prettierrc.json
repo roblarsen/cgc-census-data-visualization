@@ -1,0 +1,14 @@
+{
+  "bracketSameLine": true,
+  "embeddedLanguageFormatting": "off",
+  "singleQuote": true,
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": "**/*.yml",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}

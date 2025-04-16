@@ -1,6 +1,5 @@
 {
-
-    "compilerOptions": {
+  "compilerOptions": {
     "target": "ES6",
     "module": "es6",
     "jsx": "react",
@@ -9,8 +8,8 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "noImplicitAny": false,
+    "noImplicitAny": false
   },
   "include": ["scripts/**/*"],
-  "paths" : ["node_modules/**/*"]
+  "paths": ["node_modules/**/*"]
 }
