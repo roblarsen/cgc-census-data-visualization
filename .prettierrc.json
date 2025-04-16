@@ -1,7 +1,7 @@
 {
   "bracketSameLine": true,
   "embeddedLanguageFormatting": "off",
-  "singleQuote": true,
+  "singleQuote": false,
   "trailingComma": "none",
   "overrides": [
     {

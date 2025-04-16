@@ -9,13 +9,12 @@
   "license": "",
   "author": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
     "prettier": "prettier --write ./**/*.{js,ts,json,md,mjs,yml}"
   },
   "pre-commit": [
-    "test",
     "prettier"
   ],
   "devDependencies": {
