@@ -84,8 +84,15 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.circle {opacity:.7}
+.circle {opacity:.8}
 .circle:hover {opacity:1}
+
+.tooltip{
+  background-color: #000;
+  border-radius : 5px;
+  padding : 10px;
+  color : #fff;
+  position: absolute;
 
 
 /* ==========================================================================

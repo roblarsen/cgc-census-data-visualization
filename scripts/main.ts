@@ -7,7 +7,6 @@ const data = [
     date: "04/18/1938",
     average: 4.18,
     population: 44,
-    color: "#003366",
     id: "action-comics-1"
   },
   {
@@ -15,7 +14,6 @@ const data = [
     date: "03/30/1939",
     average: 4.59,
     population: 38,
-    color: "#003366",
     id: "detective-comics-27"
   },
   {
@@ -82,7 +80,6 @@ data.forEach((a) => {
 });
 
 const maxPop = _.maxBy(data, "population").population;
-const minPop = _.minBy(data, "population").population;
 const maxGrade = _.maxBy(data, "average").average + 1;
 const minYear = Math.min(...years);
 const maxYear = Math.max(...years) + 1;
@@ -104,11 +101,7 @@ const tooltip = d3
   .append("div")
   .style("opacity", 0)
   .attr("class", "tooltip")
-  .style("background-color", "black")
-  .style("border-radius", "5px")
-  .style("padding", "10px")
-  .style("color", "white")
-  .style("position", "absolute");
+
 
 const showTooltip = function (d) {
   const text = `
