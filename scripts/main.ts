@@ -100,8 +100,7 @@ const tooltip = d3
   .select("#chart")
   .append("div")
   .style("opacity", 0)
-  .attr("class", "tooltip")
-
+  .attr("class", "tooltip");
 
 const showTooltip = function (d) {
   const text = `
