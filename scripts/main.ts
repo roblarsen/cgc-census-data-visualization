@@ -72,6 +72,18 @@ const data = [
     population: 33,
     id: "whiz-2"
   }
+  /*
+  Pep 22
+  Action Comics 10
+  Flash Comics 1
+  Detective Comics 29
+  All Star Comics 8
+  More Fun Comics 52
+  Action Comics 2
+  Detective Comics 33
+  Wonder Woman
+  Sensation Comics
+  */
 ];
 const years = [];
 data.forEach((a) => {
