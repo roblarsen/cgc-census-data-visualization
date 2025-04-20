@@ -136,11 +136,25 @@ let data: Comic[] = [
     population: 24,
     average: 4.08,
     date: "6/20/1938"
+  },
+  {
+    title: "Detective Comics #33",
+    id: "detective-comics-33",
+    link: "http://www.cgcdata.com/cgc/search/isolateid/292",
+    population: 68,
+    average: 3.72,
+    date: "11/10/1939"
+  },
+  {
+    title: "Wonder Woman #1",
+    id: "wonder-woman-1",
+    link: "http://www.cgcdata.com/cgc/search/isolateid/5894",
+    population: 135,
+    average: 	4.47,
+    date: "7/10/1942"
   }
-
+  
   /*
-    "title": "Detective Comics 33
-    "title": "Wonder Woman
     "title": "Sensation Comics
     */
 ];
@@ -159,7 +173,7 @@ const maxYear = Math.max(...years) + 1;
 
 const margin = { top: 10, right: 20, bottom: 30, left: 50 },
   width = 1024 - margin.left - margin.right,
-  height = 660 - margin.top - margin.bottom;
+  height = 800 - margin.top - margin.bottom;
 
 const svg = d3
   .select("#chart")
