@@ -150,10 +150,10 @@ let data: Comic[] = [
     id: "wonder-woman-1",
     link: "http://www.cgcdata.com/cgc/search/isolateid/5894",
     population: 135,
-    average: 	4.47,
+    average: 4.47,
     date: "7/10/1942"
   }
-  
+
   /*
     "title": "Sensation Comics
     */
