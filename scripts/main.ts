@@ -1,16 +1,15 @@
 import * as d3 from "d3";
 import * as _ from "lodash";
 
-type Comic =  
-{
-  title: string,
-  date: string,
-  average: number,
-  population: number,
-  id: string,
-  link?:string
-}
-let data:Comic[] = [
+type Comic = {
+  title: string;
+  date: string;
+  average: number;
+  population: number;
+  id: string;
+  link?: string;
+};
+let data: Comic[] = [
   {
     title: "Action Comics #1",
     date: "04/18/1938",
@@ -82,61 +81,63 @@ let data:Comic[] = [
     id: "whiz-2"
   },
   {
-    "title": "Pep Comics #22",
-    "date": "11/30/1941", 
-    "average": 3.24, 
-    "population": 21, 
-    "id": "pep-comics-22", 
-    "link": "http://www.cgcdata.com/cgc/search/isolateid/18236"
+    title: "Pep Comics #22",
+    date: "11/30/1941",
+    average: 3.24,
+    population: 21,
+    id: "pep-comics-22",
+    link: "http://www.cgcdata.com/cgc/search/isolateid/18236"
   },
   {
-    "title": "Action Comics #10",
-    "population": 23,
-    "average": 3.26,
-    "id": "action-comics-10",
-    "date": "3/10/1939",
-    "link": "http://www.cgcdata.com/cgc/search/isolateid/6593"
+    title: "Action Comics #10",
+    population: 23,
+    average: 3.26,
+    id: "action-comics-10",
+    date: "3/10/1939",
+    link: "http://www.cgcdata.com/cgc/search/isolateid/6593"
   },
 
   {
-    "title": "Flash Comics #1",
-    "link": "http://www.cgcdata.com/cgc/search/isolateid/3343",
-    "population": 49,
-    "average": 4.21,
-    "id": "flash-comics-1",
-    "date": "11/20/1939"
-  },{
-    "title": "Detective Comics #29",
-    "link":"http://www.cgcdata.com/cgc/search/isolateid/3373",
-    "population": 42,
-    "average": 	4.44,
-    "id":"detective-comics-29",
-    "date":"5/31/1939"
-  },{
-    "title": "All Star Comics #8",
-    "link":"http://www.cgcdata.com/cgc/search/isolateid/663",
-    "id":"all-star-comics-8",
-    "population":154,
-    "average":3.79,
-    "date":"10/21/1941"
-  },{
-        "title": "More Fun Comics #52",
-        "id":"more-fun-comics-52",
-        "link":"http://www.cgcdata.com/cgc/search/isolateid/1762",
-        "population":22,
-        "average":4.49,
-        "date":"2/10/1940"
+    title: "Flash Comics #1",
+    link: "http://www.cgcdata.com/cgc/search/isolateid/3343",
+    population: 49,
+    average: 4.21,
+    id: "flash-comics-1",
+    date: "11/20/1939"
   },
   {
-    "title": "Action Comics #2",
-    "id":"action-comics-2",
-    "link":"http://www.cgcdata.com/cgc/search/isolateid/8502",
-    "population":24,
-    "average":	4.08,
-    "date":"6/20/1938"
-}
- 
-  
+    title: "Detective Comics #29",
+    link: "http://www.cgcdata.com/cgc/search/isolateid/3373",
+    population: 42,
+    average: 4.44,
+    id: "detective-comics-29",
+    date: "5/31/1939"
+  },
+  {
+    title: "All Star Comics #8",
+    link: "http://www.cgcdata.com/cgc/search/isolateid/663",
+    id: "all-star-comics-8",
+    population: 154,
+    average: 3.79,
+    date: "10/21/1941"
+  },
+  {
+    title: "More Fun Comics #52",
+    id: "more-fun-comics-52",
+    link: "http://www.cgcdata.com/cgc/search/isolateid/1762",
+    population: 22,
+    average: 4.49,
+    date: "2/10/1940"
+  },
+  {
+    title: "Action Comics #2",
+    id: "action-comics-2",
+    link: "http://www.cgcdata.com/cgc/search/isolateid/8502",
+    population: 24,
+    average: 4.08,
+    date: "6/20/1938"
+  }
+
   /*
     "title": "Detective Comics 33
     "title": "Wonder Woman
@@ -149,7 +150,7 @@ data.forEach((a) => {
   years.push(mdy[2]);
 });
 
-data = _.orderBy(data,["population"],["desc"]);
+data = _.orderBy(data, ["population"], ["desc"]);
 console.log(data);
 const maxPop = _.maxBy(data, "population").population;
 const maxGrade = _.maxBy(data, "average").average + 1;
@@ -232,8 +233,10 @@ svg
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x));
 
-
-const z = d3.scaleLinear().domain([0, maxPop]).range([maxPop*.10, maxPop*.75]);
+const z = d3
+  .scaleLinear()
+  .domain([0, maxPop])
+  .range([maxPop * 0.1, maxPop * 0.75]);
 
 svg
   .append("g")
