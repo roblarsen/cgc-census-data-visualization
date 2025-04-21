@@ -194,7 +194,7 @@ const tooltip = d3
   .style("opacity", 0)
   .attr("class", "tooltip");
 
-const showTooltip = (e:MouseEvent)=> {
+const showTooltip = (e: MouseEvent) => {
   const text = `
     <p>Title: ${d3.select(e.srcElement).datum().title}</p>
     <p>Date: ${d3.select(e.srcElement).datum().date}</p>
@@ -207,12 +207,12 @@ const showTooltip = (e:MouseEvent)=> {
     .style("left", d3.pointer(event)[0] + 30 + "px")
     .style("top", d3.pointer(event)[1] + 30 + "px");
 };
-const moveTooltip = (e:MouseEvent)=> {
+const moveTooltip = (e: MouseEvent) => {
   tooltip
     .style("left", d3.pointer(event)[0] + 30 + "px")
     .style("top", d3.pointer(event)[1] + 30 + "px");
 };
-const hideTooltip = (e:MouseEvent)=> {
+const hideTooltip = (e: MouseEvent) => {
   tooltip.style("opacity", 0);
 };
 
@@ -262,23 +262,23 @@ svg
   .data(data)
   .enter()
   .append("image")
-  .attr("x", (d:Comic)=> {
+  .attr("x", (d: Comic) => {
     return x(new Date(d.date)) - z(d.population) / 2;
   })
-  .attr("y", (d:Comic)=> {
+  .attr("y", (d: Comic) => {
     return y(d.average) - z(d.population) / 2;
   })
-  .attr("width", (d:Comic)=> {
+  .attr("width", (d: Comic) => {
     return z(d.population);
   })
-  .attr("height", (d:Comic)=> {
+  .attr("height", (d: Comic) => {
     return z(d.population);
   })
   .attr("class", "circle")
-  .attr("href", (d:Comic)=> {
+  .attr("href", (d: Comic) => {
     return "/img/" + d.id + ".jpg";
   })
-  .attr("clip-path", (d:Comic)=> {
+  .attr("clip-path", (d: Comic) => {
     return `url(#${d.id})`;
   })
   .on("mouseover", showTooltip)
@@ -291,16 +291,16 @@ svg
   .data(data)
   .enter()
   .append("clipPath")
-  .attr("id", (d:Comic)=> {
+  .attr("id", (d: Comic) => {
     return d.id;
   })
   .append("circle")
-  .attr("cx", (d:Comic)=> {
+  .attr("cx", (d: Comic) => {
     return x(new Date(d.date));
   })
-  .attr("cy", (d:Comic)=> {
+  .attr("cy", (d: Comic) => {
     return y(d.average);
   })
-  .attr("r", (d:Comic)=> {
+  .attr("r", (d: Comic) => {
     return z(d.population) / 2;
   });
