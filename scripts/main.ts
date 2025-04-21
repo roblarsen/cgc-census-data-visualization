@@ -152,11 +152,16 @@ let data: Comic[] = [
     population: 135,
     average: 4.47,
     date: "7/10/1942"
+  },
+  {
+    title: "Sensation Comics #1",
+    id: "sensation-comics-1",
+    link: "http://www.cgcdata.com/cgc/search/isolateid/662",
+    population: 82,
+    average: 	4.78,
+    date: "7/10/1942"
   }
 
-  /*
-    "title": "Sensation Comics
-    */
 ];
 const years = [];
 data.forEach((a) => {
