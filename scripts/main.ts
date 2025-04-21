@@ -159,7 +159,7 @@ let data: Comic[] = [
     link: "http://www.cgcdata.com/cgc/search/isolateid/662",
     population: 82,
     average: 4.78,
-    date: "7/10/1942"
+    date: "3/24/1942"
   }
 ];
 const years = [];
@@ -172,11 +172,12 @@ data = _.orderBy(data, ["population"], ["desc"]);
 console.log(data);
 const maxPop = _.maxBy(data, "population").population;
 const maxGrade = _.maxBy(data, "average").average + 1;
+const minGrade = _.minBy(data, "average").average - 1;
 const minYear = Math.min(...years);
 const maxYear = Math.max(...years) + 1;
 
 const margin = { top: 10, right: 20, bottom: 30, left: 50 },
-  width = 1024 - margin.left - margin.right,
+  width = 1440 - margin.left - margin.right,
   height = 800 - margin.top - margin.bottom;
 
 const svg = d3
@@ -193,12 +194,12 @@ const tooltip = d3
   .style("opacity", 0)
   .attr("class", "tooltip");
 
-const showTooltip = function (d) {
+const showTooltip = (e:MouseEvent)=> {
   const text = `
-    <p>Title: ${d3.select(d.srcElement).datum().title}</p>
-    <p>Date: ${d3.select(d.srcElement).datum().date}</p>
-    <p>Average Grade: ${d3.select(d.srcElement).datum().average}</p>
-    <p>Population: ${d3.select(d.srcElement).datum().population}</p>
+    <p>Title: ${d3.select(e.srcElement).datum().title}</p>
+    <p>Date: ${d3.select(e.srcElement).datum().date}</p>
+    <p>Average Grade: ${d3.select(e.srcElement).datum().average}</p>
+    <p>Population: ${d3.select(e.srcElement).datum().population}</p>
   `;
   tooltip
     .style("opacity", 1)
@@ -206,13 +207,12 @@ const showTooltip = function (d) {
     .style("left", d3.pointer(event)[0] + 30 + "px")
     .style("top", d3.pointer(event)[1] + 30 + "px");
 };
-const moveTooltip = function (d) {
-  console.log(d3.pointer(event));
+const moveTooltip = (e:MouseEvent)=> {
   tooltip
     .style("left", d3.pointer(event)[0] + 30 + "px")
     .style("top", d3.pointer(event)[1] + 30 + "px");
 };
-const hideTooltip = function (d) {
+const hideTooltip = (e:MouseEvent)=> {
   tooltip.style("opacity", 0);
 };
 
@@ -223,7 +223,7 @@ const x = d3.scaleTime(
 
 svg.append("g").attr("transform", "translate(0," + height + ")");
 
-const y = d3.scaleLinear().domain([0, maxGrade]).range([height, 0]);
+const y = d3.scaleLinear().domain([minGrade, maxGrade]).range([height, 0]);
 const yGrid = d3
   .axisLeft()
   .scale(y)
@@ -262,23 +262,23 @@ svg
   .data(data)
   .enter()
   .append("image")
-  .attr("x", function (d) {
+  .attr("x", (d:Comic)=> {
     return x(new Date(d.date)) - z(d.population) / 2;
   })
-  .attr("y", function (d) {
+  .attr("y", (d:Comic)=> {
     return y(d.average) - z(d.population) / 2;
   })
-  .attr("width", function (d) {
+  .attr("width", (d:Comic)=> {
     return z(d.population);
   })
-  .attr("height", function (d) {
+  .attr("height", (d:Comic)=> {
     return z(d.population);
   })
   .attr("class", "circle")
-  .attr("href", function (d) {
+  .attr("href", (d:Comic)=> {
     return "/img/" + d.id + ".jpg";
   })
-  .attr("clip-path", function (d) {
+  .attr("clip-path", (d:Comic)=> {
     return `url(#${d.id})`;
   })
   .on("mouseover", showTooltip)
@@ -291,16 +291,16 @@ svg
   .data(data)
   .enter()
   .append("clipPath")
-  .attr("id", function (d) {
+  .attr("id", (d:Comic)=> {
     return d.id;
   })
   .append("circle")
-  .attr("cx", function (d) {
+  .attr("cx", (d:Comic)=> {
     return x(new Date(d.date));
   })
-  .attr("cy", function (d) {
+  .attr("cy", (d:Comic)=> {
     return y(d.average);
   })
-  .attr("r", function (d) {
+  .attr("r", (d:Comic)=> {
     return z(d.population) / 2;
   });
