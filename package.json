@@ -14,9 +14,6 @@
     "build": "webpack --config webpack.config.prod.js",
     "prettier": "prettier --write ./**/*.{js,ts,json,md,mjs,yml}"
   },
-  "pre-commit": [
-    "prettier"
-  ],
   "devDependencies": {
     "@types/node": "^22.14.1",
     "@types/webpack": "^5.28.5",
