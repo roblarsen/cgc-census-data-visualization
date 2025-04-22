@@ -2,12 +2,14 @@ import * as d3 from "d3";
 import * as _ from "lodash";
 
 type Comic = {
-  title: string;
-  date: string;
   average: number;
-  population: number;
+  date: string;
   id: string;
-  link?: string;
+  link: string;
+  population: number;
+  rank: number;
+  title: string;
+  value: number;
 };
 let data: Comic[] = [
   {
@@ -15,70 +17,100 @@ let data: Comic[] = [
     date: "04/18/1938",
     average: 4.18,
     population: 44,
-    id: "action-comics-1"
+    id: "action-comics-1",
+    value: 7000000,
+    link: "",
+    rank: 1
   },
   {
     title: "Detective Comics #27",
     date: "03/30/1939",
     average: 4.59,
     population: 38,
-    id: "detective-comics-27"
+    id: "detective-comics-27",
+    value: 4800000,
+    link: "",
+    rank: 2
   },
   {
     title: "Superman #1",
     date: "05/18/1939",
     average: 2.51,
     population: 78,
-    id: "superman-1"
+    id: "superman-1",
+    value: 3000000,
+    link: "",
+    rank: 3
   },
   {
     title: "Marvel Comics #1",
     date: "09/31/1939",
     average: 4.27,
     population: 37,
-    id: "marvel-comics-1"
+    id: "marvel-comics-1",
+    value: 1400000,
+    link: "",
+    rank: 4
   },
   {
     title: "Batman #1",
     date: "04/25/1940",
     average: 3.2,
     population: 153,
-    id: "batman-1"
+    id: "batman-1",
+    value: 1300000,
+    link: "",
+    rank: 5
   },
   {
     title: "All American Comics #16",
     date: "05/17/1940",
     average: 4.1,
     population: 33,
-    id: "all-american-comics-16"
+    id: "all-american-comics-16",
+    value: 1000000,
+    link: "",
+    rank: 6
   },
   {
     title: "Captain America Comics #1",
     date: "12/20/1940",
     average: 5.1,
     population: 97,
-    id: "captain-america-comics-1"
+    id: "captain-america-comics-1",
+    value: 750000,
+    link: "",
+    rank: 7
   },
   {
     title: "Action Comics #7",
     date: "10/25/1938",
     average: 3.28,
     population: 33,
-    id: "action-comics-7"
+    id: "action-comics-7",
+    value: 650000,
+    link: "",
+    rank: 8
   },
   {
     title: "Detective Comics #31",
     date: "07/30/1939",
     average: 2.97,
     population: 66,
-    id: "detective-comics-31"
+    id: "detective-comics-31",
+    value: 525000,
+    link: "",
+    rank: 9
   },
   {
     title: "Whiz Comics #2 (#1)",
     date: "11/08/1939",
     average: 3.31,
     population: 33,
-    id: "whiz-2"
+    id: "whiz-2",
+    value: 475000,
+    link: "",
+    rank: 10
   },
   {
     title: "Pep Comics #22",
@@ -86,7 +118,9 @@ let data: Comic[] = [
     average: 3.24,
     population: 21,
     id: "pep-comics-22",
-    link: "http://www.cgcdata.com/cgc/search/isolateid/18236"
+    link: "http://www.cgcdata.com/cgc/search/isolateid/18236",
+    value: 455000,
+    rank: 11
   },
   {
     title: "Action Comics #10",
@@ -94,7 +128,9 @@ let data: Comic[] = [
     average: 3.26,
     id: "action-comics-10",
     date: "3/10/1939",
-    link: "http://www.cgcdata.com/cgc/search/isolateid/6593"
+    link: "http://www.cgcdata.com/cgc/search/isolateid/6593",
+    value: 420000,
+    rank: 12
   },
 
   {
@@ -103,7 +139,9 @@ let data: Comic[] = [
     population: 49,
     average: 4.21,
     id: "flash-comics-1",
-    date: "11/20/1939"
+    date: "11/20/1939",
+    value: 400000,
+    rank: 13
   },
   {
     title: "Detective Comics #29",
@@ -111,7 +149,9 @@ let data: Comic[] = [
     population: 42,
     average: 4.44,
     id: "detective-comics-29",
-    date: "5/31/1939"
+    date: "5/31/1939",
+    value: 395000,
+    rank: 14
   },
   {
     title: "All Star Comics #8",
@@ -119,7 +159,9 @@ let data: Comic[] = [
     id: "all-star-comics-8",
     population: 154,
     average: 3.79,
-    date: "10/21/1941"
+    date: "10/21/1941",
+    value: 390000,
+    rank: 15
   },
   {
     title: "More Fun Comics #52",
@@ -127,7 +169,9 @@ let data: Comic[] = [
     link: "http://www.cgcdata.com/cgc/search/isolateid/1762",
     population: 22,
     average: 4.49,
-    date: "2/10/1940"
+    date: "2/10/1940",
+    value: 320000,
+    rank: 16
   },
   {
     title: "Action Comics #2",
@@ -135,7 +179,9 @@ let data: Comic[] = [
     link: "http://www.cgcdata.com/cgc/search/isolateid/8502",
     population: 24,
     average: 4.08,
-    date: "6/20/1938"
+    date: "6/20/1938",
+    value: 305000,
+    rank: 17
   },
   {
     title: "Detective Comics #33",
@@ -143,7 +189,9 @@ let data: Comic[] = [
     link: "http://www.cgcdata.com/cgc/search/isolateid/292",
     population: 68,
     average: 3.72,
-    date: "11/10/1939"
+    date: "11/10/1939",
+    value: 290000,
+    rank: 18
   },
   {
     title: "Wonder Woman #1",
@@ -151,7 +199,9 @@ let data: Comic[] = [
     link: "http://www.cgcdata.com/cgc/search/isolateid/5894",
     population: 135,
     average: 4.47,
-    date: "7/10/1942"
+    date: "7/10/1942",
+    value: 265000,
+    rank: 19
   },
   {
     title: "Sensation Comics #1",
@@ -159,12 +209,14 @@ let data: Comic[] = [
     link: "http://www.cgcdata.com/cgc/search/isolateid/662",
     population: 82,
     average: 4.78,
-    date: "3/24/1942"
+    date: "3/24/1942",
+    value: 250000,
+    rank: 20
   }
 ];
 const years = [];
-data.forEach((a) => {
-  const mdy = a.date.split("/");
+data.forEach((d:Comic) => {
+  const mdy = d.date.split("/");
   years.push(mdy[2]);
 });
 
@@ -197,9 +249,12 @@ const tooltip = d3
 const showTooltip = (e: MouseEvent) => {
   const text = `
     <p>Title: ${d3.select(e.target).datum().title}</p>
-    <p>Date: ${d3.select(e.target).datum().date}</p>
+
     <p>Average Grade: ${d3.select(e.target).datum().average}</p>
     <p>Population: ${d3.select(e.target).datum().population}</p>
+    <p>Rank: ${d3.select(e.target).datum().rank}</p>
+    <p>OSPG Value: ${ d3.format("$,")(d3.select(e.target).datum().value)}</p>    
+    <p>Date: ${d3.select(e.target).datum().date}</p>
   `;
   tooltip
     .style("display","block")
