@@ -1,6 +1,6 @@
-const path = require("path");
+import path from "path";
 
-module.exports = {
+export default {
   entry: {
     app: "./scripts/main.ts"
   },
@@ -15,7 +15,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve("dist"),
     clean: true,
     filename: "./scripts/main.js"
   }

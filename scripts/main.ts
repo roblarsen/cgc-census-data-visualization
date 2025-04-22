@@ -228,7 +228,9 @@ const minGrade = _.minBy(data, "average").average - 1;
 const minYear = Math.min(...years);
 const maxYear = Math.max(...years) + 1;
 
-let canvas = { width: document.body.offsetWidth * .9, height: document.body.offsetHeight * .9};
+
+const canvas = { width: document.body.offsetWidth * .9, height: document.body.offsetHeight * .9};
+
 const ratio = .55;
 
 
@@ -279,7 +281,7 @@ const moveTooltip = (e: MouseEvent) => {
     .style("left", `${d3.pointer(e)[0] + 60}px`)
     .style("top", d3.pointer(e)[1] + 30 + "px");
 };
-const hideTooltip = (e: MouseEvent) => {
+const hideTooltip = () => {
   tooltip.style("display", "none");
 };
 
