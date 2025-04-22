@@ -169,7 +169,7 @@ data.forEach((a) => {
 });
 
 data = _.orderBy(data, ["population"], ["desc"]);
-console.log(data);
+
 const maxPop = _.maxBy(data, "population").population;
 const maxGrade = _.maxBy(data, "average").average + 1;
 const minGrade = _.minBy(data, "average").average - 1;
@@ -191,29 +191,30 @@ const svg = d3
 const tooltip = d3
   .select("#chart")
   .append("div")
-  .style("opacity", 0)
+  .style("display", "none")
   .attr("class", "tooltip");
 
 const showTooltip = (e: MouseEvent) => {
   const text = `
-    <p>Title: ${d3.select(e.srcElement).datum().title}</p>
-    <p>Date: ${d3.select(e.srcElement).datum().date}</p>
-    <p>Average Grade: ${d3.select(e.srcElement).datum().average}</p>
-    <p>Population: ${d3.select(e.srcElement).datum().population}</p>
+    <p>Title: ${d3.select(e.target).datum().title}</p>
+    <p>Date: ${d3.select(e.target).datum().date}</p>
+    <p>Average Grade: ${d3.select(e.target).datum().average}</p>
+    <p>Population: ${d3.select(e.target).datum().population}</p>
   `;
   tooltip
-    .style("opacity", 1)
+    .style("display","block")
     .html(text)
-    .style("left", d3.pointer(event)[0] + 30 + "px")
-    .style("top", d3.pointer(event)[1] + 30 + "px");
+    .style("left", d3.pointer(e)[0] + 30 + "px")
+    .style("top", d3.pointer(e)[1] + 30 + "px");
 };
 const moveTooltip = (e: MouseEvent) => {
+
   tooltip
-    .style("left", d3.pointer(event)[0] + 30 + "px")
-    .style("top", d3.pointer(event)[1] + 30 + "px");
+    .style("left", `${d3.pointer(e)[0] + 60}px`)
+    .style("top", d3.pointer(e)[1] + 30 + "px");
 };
 const hideTooltip = (e: MouseEvent) => {
-  tooltip.style("opacity", 0);
+  tooltip.style("display", "none");
 };
 
 const x = d3.scaleTime(
