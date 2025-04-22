@@ -228,9 +228,13 @@ const minGrade = _.minBy(data, "average").average - 1;
 const minYear = Math.min(...years);
 const maxYear = Math.max(...years) + 1;
 
-const margin = { top: 10, right: 20, bottom: 30, left: 50 },
-  width = 1440 - margin.left - margin.right,
-  height = 800 - margin.top - margin.bottom;
+let canvas = { width: document.body.offsetWidth, height: document.body.offsetHeight};
+const ratio = .55;
+
+
+const margin = { top: 10, right: 50, bottom: 30, left: 50 },
+  width = canvas.width - margin.left - margin.right,
+  height = (canvas.width * ratio) - margin.top - margin.bottom;
 
 const svg = d3
   .select("#chart")
@@ -360,3 +364,8 @@ svg
   .attr("r", (d: Comic) => {
     return z(d.population) / 2;
   });
+
+  d3.select(window).on("resize",()=>{
+
+    console.log(svg)
+  })
