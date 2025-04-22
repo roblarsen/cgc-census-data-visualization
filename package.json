@@ -1,5 +1,5 @@
 {
-  "name": " ",
+  "name": "CGC Census Data Visualization ",
   "version": "0.0.1",
   "description": "",
   "private": true,
@@ -10,22 +10,27 @@
   "author": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "start": "webpack serve --open --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js",
-    "prettier": "prettier --write ./**/*.{js,ts,json,md,mjs,yml}"
+    "start": "webpack serve --open --config webpack.config.dev.mjs",
+    "build": "webpack --config webpack.config.prod.mjs",
+    "prettier": "prettier --write ./**/*.{js,ts,json,md,mjs,yml}",
+    "eslint": "npx eslint"
   },
   "devDependencies": {
+    "@eslint/js": "^9.25.1",
     "@types/node": "^22.14.1",
     "@types/webpack": "^5.28.5",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "d3": "^7.9.0",
+    "eslint": "^9.25.1",
+    "globals": "^16.0.0",
     "html-webpack-plugin": "^5.6.0",
     "lodash": "^4.17.21",
     "pre-commit": "^1.2.2",
     "prettier": "^3.5.3",
     "ts-loader": "^9.5.2",
     "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.0",
     "webpack": "^5.99.5",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
