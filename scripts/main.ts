@@ -228,7 +228,9 @@ const minGrade = _.minBy(data, "average").average - 1;
 const minYear = Math.min(...years);
 const maxYear = Math.max(...years) + 1;
 
-const canvas = { width: document.body.offsetWidth, height: document.body.offsetHeight};
+
+const canvas = { width: document.body.offsetWidth * .9, height: document.body.offsetHeight * .9};
+
 const ratio = .55;
 
 
@@ -252,13 +254,20 @@ const tooltip = d3
 
 const showTooltip = (e: MouseEvent) => {
   const text = `
-    <p>Title: ${d3.select(e.target).datum().title}</p>
-
-    <p>Average Grade: ${d3.select(e.target).datum().average}</p>
-    <p>Population: ${d3.select(e.target).datum().population}</p>
-    <p>Rank: ${d3.select(e.target).datum().rank}</p>
-    <p>OSPG Value: ${ d3.format("$,")(d3.select(e.target).datum().value)}</p>    
-    <p>Date: ${d3.select(e.target).datum().date}</p>
+  <dl>
+    <dt>Title:</dt>
+    <dd>${d3.select(e.target).datum().title}</dd>
+    <dt>Average Grade:</dt>
+    <dd> ${d3.select(e.target).datum().average}</dd>
+    <dt>Population:</dt>
+    <dd> ${d3.select(e.target).datum().population}</dd>
+    <dt>Rank:</dt>
+    <dd> ${d3.select(e.target).datum().rank}</dd>
+    <dt>Value (OSPG):</dt>
+    <dd> ${d3.format("$,")(d3.select(e.target).datum().value)}</dd>
+    <dt>Date:</dt>
+    <dd>${d3.select(e.target).datum().date}</dd>
+</dl>
   `;
   tooltip
     .style("display","block")

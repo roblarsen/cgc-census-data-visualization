@@ -89,19 +89,32 @@ textarea {
 }
 .circle:hover {
   opacity:1;
-  cursor: pointer;
 }
 
 .tooltip{
   background-color: #036;
   border-radius : 5px;
-  min-width: 250px;
-  padding : 10px;
+  width: auto;
   color : #fff;
   position: absolute;
   font-family: "Comic Neue";
+  padding: 10px;
 }
 
+.tooltip dl {
+  margin: auto 10px;
+  display: grid;
+  grid-template-columns: 110px max-content;
+}
+
+.tooltip dt {
+  font-weight: bold;
+  grid-column-start: 1;
+}
+
+.tooltip dd {
+  grid-column-start: 2;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
