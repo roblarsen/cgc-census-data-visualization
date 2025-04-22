@@ -84,15 +84,22 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.circle {opacity:.8;}
-.circle:hover {opacity:1}
+.circle {
+  opacity:.8;
+}
+.circle:hover {
+  opacity:1;
+  cursor: pointer;
+}
 
 .tooltip{
-  background-color: #000;
+  background-color: #036;
   border-radius : 5px;
+  min-width: 250px;
   padding : 10px;
   color : #fff;
   position: absolute;
+  font-family: "Comic Neue";
 }
 
 /* ==========================================================================
