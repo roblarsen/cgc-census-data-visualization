@@ -90,7 +90,11 @@ textarea {
 .circle:hover {
   opacity:1;
 }
-
+text.label {
+  
+  font-family: "Comic Neue";
+  font-size: 16pt;
+}
 .tooltip{
   background-color: #036;
   border-radius : 5px;

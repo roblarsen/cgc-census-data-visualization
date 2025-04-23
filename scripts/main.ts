@@ -234,7 +234,7 @@ const canvas = { width: document.body.offsetWidth * .9, height: document.body.of
 const ratio = .55;
 
 
-const margin = { top: 10, right: 50, bottom: 30, left: 50 },
+const margin = { top: 10, right: 50, bottom: 60, left: 60 },
   width = canvas.width - margin.left - margin.right,
   height = (canvas.width * ratio) - margin.top - margin.bottom;
 
@@ -353,6 +353,22 @@ svg
   .on("mouseover", showTooltip)
   .on("mousemove", moveTooltip)
   .on("mouseleave", hideTooltip);
+// Add X axis label:
+svg.append("text")
+    .attr("class", "label")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + margin.top + 30)
+    .text("Date of Release");
+
+// Y axis label:
+svg.append("text")
+    .attr("class", "label")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left+20)
+    .attr("x", -margin.top)
+    .text("Average Grade")
 
 svg
   .append("defs")
@@ -374,7 +390,3 @@ svg
     return z(d.population) / 2;
   });
 
-  d3.select(window).on("resize",()=>{
-
-    console.log(svg)
-  })
