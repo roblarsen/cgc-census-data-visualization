@@ -345,7 +345,7 @@ svg
   })
   .attr("class", "circle")
   .attr("href", (d: Comic) => {
-    return "/img/" + d.id + ".jpg";
+    return "./img/" + d.id + ".jpg";
   })
   .attr("clip-path", (d: Comic) => {
     return `url(#${d.id})`;
