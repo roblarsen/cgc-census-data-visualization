@@ -1,14 +1,10 @@
 import { merge } from "webpack-merge";
 import common from "./webpack.common.mjs";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
 
 export default merge(common, {
   mode: "production",
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./index.html"
-    }),
     new CopyPlugin({
       patterns: [
         { from: "img", to: "img" },

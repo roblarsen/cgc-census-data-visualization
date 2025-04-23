@@ -1,6 +1,12 @@
 import path from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
+  plugins: [
+       new HtmlWebpackPlugin({
+        template: "./index.html"
+      }),
+    ],
   entry: {
     app: "./scripts/main.ts"
   },
