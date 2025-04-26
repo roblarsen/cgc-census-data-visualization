@@ -1,5 +1,8 @@
 # cgc-census-data-visualization
 
+[See it in action](https://roblarsen.org/cgc-census-data-visualization/)
+
+      
 This repo contains code to run a bubble chart visualization of certain CGC census data.
 This initial version looks at the average grade and total population of the top ten
 Golden Age books in order to compare the relative difficulty of acquiring the books.
