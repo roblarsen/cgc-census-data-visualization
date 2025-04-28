@@ -1,13 +1,13 @@
 {
-  "name": "CGC Census Data Visualization ",
+  "name": "cgc-census-data-visualization",
   "version": "0.0.1",
   "description": "",
   "private": true,
   "keywords": [
     ""
   ],
-  "license": "",
-  "author": "",
+  "license": "MIT",
+  "author": "Rob Larsen",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "start": "webpack serve --open --config webpack.config.dev.mjs",
