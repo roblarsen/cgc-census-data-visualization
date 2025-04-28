@@ -84,7 +84,7 @@
      Author's custom styles
      ========================================================================== */
   body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #222;
     background-color: #fff;
   }
@@ -127,6 +127,7 @@
   table {
     width: 90%;
     max-width: 800px;
+    margin-left:5%;
   }
   table th {
     font-family: "Comic Neue";
