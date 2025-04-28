@@ -18,7 +18,7 @@ export function drawBubbleChart(data: Comic[]) {
   const maxYear = Math.max(...years) + 1;
 
 
-  const canvas = { width: document.body.offsetWidth * .9, height: document.body.offsetHeight * .9 };
+  const canvas = { width: document.body.offsetWidth, height: document.body.offsetHeight * .9 };
 
   const ratio = .55;
 
