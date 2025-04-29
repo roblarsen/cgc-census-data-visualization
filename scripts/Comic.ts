@@ -5,7 +5,7 @@ export class Comic {
     population: number;
     id: string;
     value: number;
-    link?: string;
+    link: string;
     rank: number;
   
     constructor(

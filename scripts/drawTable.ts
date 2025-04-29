@@ -15,7 +15,7 @@ export function drawTable(data: Comic[]) {
      const td =
      `
       <td>${d.rank}</td>      
-      <td>${d.title}</td>
+      <td><a href="${d.link}">${d.title}</a></td>
       <td> ${d3.format("$,")(d.value)}</td>
       <td>${d.date}</td>
     `
