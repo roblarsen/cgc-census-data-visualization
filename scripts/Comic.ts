@@ -2,6 +2,7 @@ export class Comic {
     title: string;
     date: string;
     average: number;
+    top50Average:number;
     population: number;
     id: string;
     value: number;
@@ -12,6 +13,7 @@ export class Comic {
       title: string,
       date: string,
       average: number,
+      top50Average:number,
       population: number,
       id: string,
       value: number,
@@ -21,6 +23,7 @@ export class Comic {
       this.title = title;
       this.date = date;
       this.average = average;
+      this.top50Average = top50Average;
       this.population = population;
       this.id = id;
       this.value = value;
