@@ -12,8 +12,8 @@ export function drawBubbleChart(data: Comic[]) {
   data = _.orderBy(data, ["population"], ["desc"]);
 
   const maxPop = _.maxBy(data, "population").population;
-  const maxGrade = Math.min(_.maxBy(data, "top50Average").top50Average + 1, 10);
-  const minGrade = _.minBy(data, "top50Average").top50Average - .5;
+  const maxGrade = _.maxBy(data, "average").average + 1;
+  const minGrade = _.minBy(data, "average").average - 1;
   const minYear = Math.min(...years);
   const maxYear = Math.max(...years) + 1;
 
@@ -46,8 +46,6 @@ export function drawBubbleChart(data: Comic[]) {
     <dd>${d3.select(e.target).datum().title}</dd>
     <dt>Average Grade:</dt>
     <dd> ${d3.select(e.target).datum().average}</dd>
-    <dt>Top 50 Copies Average Grade:</dt>
-    <dd> ${d3.select(e.target).datum().top50Average}</dd>
     <dt>Population:</dt>
     <dd> ${d3.select(e.target).datum().population}</dd>
     <dt>Rank:</dt>
@@ -112,19 +110,19 @@ export function drawBubbleChart(data: Comic[]) {
   const z = d3
     .scaleLinear()
     .domain([0, maxPop])
-    .range([maxPop * 0.005, maxPop * 0.025]);
+    .range([maxPop * 0.1, maxPop * 0.75]);
 
   svg
     .append("g")
     .selectAll("dot")
-    .data(data.sort((a, b) => b.population - a.population))
+    .data(data)
     .enter()
     .append("image")
     .attr("x", (d: Comic) => {
       return x(new Date(d.date)) - z(d.population) / 2;
     })
     .attr("y", (d: Comic) => {
-      return y(d.top50Average) - z(d.population) / 2;
+      return y(d.average) - z(d.population) / 2;
     })
     .attr("width", (d: Comic) => {
       return z(d.population);
@@ -173,7 +171,7 @@ export function drawBubbleChart(data: Comic[]) {
       return x(new Date(d.date));
     })
     .attr("cy", (d: Comic) => {
-      return y(d.top50Average);
+      return y(d.average);
     })
     .attr("r", (d: Comic) => {
       return z(d.population) / 2;
