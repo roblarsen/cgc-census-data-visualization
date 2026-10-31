@@ -1,16 +1,20 @@
-# cgc-census-data-visualization
+# CGC Census Data Visualization
 
-[See it in action](https://roblarsen.org/cgc-census-data-visualization/)
+Bubble charts and tables of CGC census data for key Golden Age and Silver Age comics, in one Vite + TypeScript + D3 app. Choose an era with the selector or the URL: `?era=golden-age` or `?era=silver-age`.
 
-      
-This repo contains code to run a bubble chart visualization of certain CGC census data.
-This initial version looks at the average grade and total population of the top ten
-Golden Age books in order to compare the relative difficulty of acquiring the books.
+Datasets live in `public/data/<era>.json` (schema: `EraDataset` in `src/types.ts`, dates are ISO `YYYY-MM-DD`) and covers in `public/img/<era>/<id>.jpg`. Averages, populations, ranks and values are precomputed census figures, not derived from raw grade distributions. The era's `chartMetric` picks the plotted grade (`top50Average` falls back to `average` when unavailable).
 
-- The X axis is time, with the idea that as superheroes became more popular, maybe there would be a larger population of books
-- The Y axis is the average grade
-- The third factor, represented by the size of the circles, is the number of unrestored copies in the CGC census.
+## Scripts
 
-<img src="dataviz.png">
+- `npm ci` – install dependencies
+- `npm run dev` – local dev server
+- `npm run typecheck` – strict `tsc --noEmit`
+- `npm test` – Vitest
+- `npm run build` – typecheck + production build into `dist/`
+- `npm run preview` – serve the build
 
-The project is written in TypeSCript and leverage D3.
+## GitHub Pages
+
+In the repository settings set **Pages → Source** to **GitHub Actions**. `.github/workflows/deploy.yml` (the only active root workflow) runs `npm ci`, `tsc --noEmit`, tests and `vite build` on Node 22, then deploys `dist/`. The build uses a relative base by default; the workflow passes the Pages base path (`BASE_PATH` env or `--base` flag also work locally), so data and image URLs work on project subpaths.
+
+The original `cgc-census-data-visualization/` and `cgc-census-data-visualization-silver-age/` folders are kept for reference and are no longer deployed.

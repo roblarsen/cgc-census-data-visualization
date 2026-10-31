@@ -1,0 +1,8 @@
+{
+  "short_name": "CGC Census",
+  "name": "CGC Census Data Visualization",
+  "icons": [{ "src": "icon.png", "type": "image/png", "sizes": "192x192" }],
+  "start_url": "./",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa"
+}
